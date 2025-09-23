@@ -1,0 +1,22 @@
+ {% extends 'base.html' %}
+
+ {% block sidebar %}
+ {% endblock sidebar %}
+
+{% block content %}
+<div class="w-full flex justify-center pt-4">
+    <form action="" method="post" class="w-[600px] flex flex-col"; ">
+        {% csrf_token %}
+        <h1 class="text-5xl font-bold mb-4 text-center">Register page</h1>
+        {% for field in form %}
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend ">{{field.label}}</legend>
+                {{field}}
+                {{field.errors}}
+            </fieldset>
+        {% endfor %}
+
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+</div>
+{% endblock content %}
