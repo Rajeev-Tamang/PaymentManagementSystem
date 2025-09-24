@@ -1,18 +1,27 @@
  {% extends 'base.html' %}
-
+ {% block title %}<title>Registation</title>{% endblock title %}
  {% block sidebar %}
  {% endblock sidebar %}
 
 {% block content %}
-<div class="w-full flex justify-center pt-4">
-    <form action="" method="post" class="w-[600px] flex flex-col"; ">
+<div class="w-full flex justify-center pt-4 relative">
+    <!-- Non-field errors positioned in top right -->
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-error alert-soft absolute top-4 right-4 max-w-sm z-10">
+        <span>{{error}}</span>
+    </div>
+    {% endfor %}
+    
+    <form action="" method="post" class="w-[600px] flex flex-col" enctype="multipart/form-data">
         {% csrf_token %}
-        <h1 class="text-5xl font-bold mb-4 text-center">Register page</h1>
+        <h1 class="text-5xl font-bold mb-4 text-center">Register</h1>
         {% for field in form %}
             <fieldset class="fieldset">
-                <legend class="fieldset-legend ">{{field.label}}</legend>
+                <legend class="fieldset-legend">{{field.label}}</legend>
                 {{field}}
-                {{field.errors}}
+            {% for error in field.errors %}
+                <div class="alert alert-error alert-soft"><span>{{error}}</span></div>
+            {% endfor %}
             </fieldset>
         {% endfor %}
 

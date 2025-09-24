@@ -1,23 +1,26 @@
  {% extends 'base.html' %}
+ {% block title %}<title>LOGIN</title>{% endblock title %}
 
  {% block sidebar %}
  {% endblock sidebar %}
 
 {% block content %}
 <div class="w-full flex justify-center pt-4">
-    <form action="" method="post" class="w-[600px] flex flex-col"; ">
-        {% csrf_token %}
-        <h1 class="text-5xl font-bold mb-4 text-center">Login</h1>
-        {{form.non_field_errors}}
-        {% for field in form %}
-            <fieldset class="fieldset">
-                <legend class="fieldset-legend ">{{field.label}}</legend>
-                {{field}}
-                {{field.errors}}
-            </fieldset>
-        {% endfor %}
+    <div class="flex justify-center">
+        <form action="" method="post" class="w-[600px] flex flex-col"; enctype="multipart/form-data"">
+            {% csrf_token %}
+            <h1 class="text-5xl font-bold mb-4 text-center">Login</h1>
+            {{form.non_field_errors}}
+            {% for field in form %}
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend ">{{field.label}}</legend>
+                    {{field}}
+                    {{field.errors}}
+                </fieldset>
+            {% endfor %}
 
-        <button class="btn btn-primary mt-4" type="submit">LOGIN</button>
-    </form>
+            <button class="btn btn-primary mt-4" type="submit">LOGIN</button>
+        </form>
+    </div>
 </div>
 {% endblock content %}

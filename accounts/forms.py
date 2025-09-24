@@ -3,16 +3,16 @@ from .models import CustomUser
 from django.forms import widgets as widget 
 
 class SchoolAdminRegistrationForm(forms.Form):
-    username = forms.CharField(max_length=255,widget=widget.TextInput(attrs={'class':'input w-full p-2 '}))
-    email = forms.EmailField(widget=widget.EmailInput(attrs={'class':'input w-full p-2 '}))
+    username = forms.CharField(max_length=255,widget=forms.TextInput(attrs={'class':'input w-full p-2 '}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'input w-full p-2 '}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'input w-full p-2 '}))
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'input w-full p-2 '}))
 
-    first_name = forms.CharField(max_length=255,widget=widget.TextInput(attrs={'class':'input w-full p-2 '}))
-    last_name = forms.CharField(max_length=255,widget=widget.TextInput(attrs={'class':'input w-full p-2 '}))
-    phone_number=forms.CharField(max_length=10,widget=widget.TextInput(attrs={'class':'input w-full p-2 '}))
-    address = forms.CharField(max_length=100,widget=widget.TextInput(attrs={'class':'input w-full p-2 '}))
-    profile_pic=forms.ImageField(widget=widget.FileInput(attrs={'class':'input-file w-full p-2 '}),required=False)
+    first_name = forms.CharField(max_length=255,widget=forms.TextInput(attrs={'class':'input w-full p-2 '}))
+    last_name = forms.CharField(max_length=255,widget=forms.TextInput(attrs={'class':'input w-full p-2 '}))
+    phone_number=forms.CharField(max_length=10,widget=forms.TextInput(attrs={'class':'input w-full p-2 '}))
+    address = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'input w-full p-2 '}))
+    profile_pic=forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'input-file w-full p-2'}),required=False)
 
     def clean(self):
         if self.cleaned_data['password'] != self.cleaned_data['confirm_password']:
@@ -36,6 +36,6 @@ class SchoolAdminRegistrationForm(forms.Form):
 
 
 class SchoolAdminLoginForm(forms.Form):
-    username = forms.CharField(max_length=255,widget=widget.TextInput(attrs={'class':'input w-full p-2 '}))
+    username = forms.CharField(max_length=255,widget=forms.TextInput(attrs={'class':'input w-full p-2 '}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'input w-full p-2 '}))
     
